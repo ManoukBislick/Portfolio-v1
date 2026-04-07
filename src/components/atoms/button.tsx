@@ -1,8 +1,9 @@
-import './App.css'
-
 function Button() {
   return(
     <>
+      <div className="w-36 h-8 border border-white rounded-lg">
+        <div></div>
+      </div>
     </>
   )
 }
