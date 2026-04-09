@@ -1,4 +1,33 @@
 * {
   background-color: #0D0D0D;
+  scroll-behavior: smooth;
+  
+  cursor: none !important;
 }
 
+html,
+body,
+#root {
+  cursor: none;
+}
+
+a,
+button,
+input,
+textarea,
+[role="button"] {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: -8px;
+  left: -8px;
+  z-index: 9999;
+  height: 16px;
+  width: 16px;
+  pointer-events: none;
+  border-radius: 9999px;
+  background: #00bc7d;
+  will-change: transform;
+}
