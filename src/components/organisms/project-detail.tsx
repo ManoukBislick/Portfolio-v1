@@ -1,6 +1,7 @@
-import Button from '../atoms/button'
 import Image from '../atoms/image'
+import TagBlock from '../atoms/tag-block'
 import type { Project } from '../../data/projects'
+import Link from '../atoms/link'
 
 type ProjectDetailProps = {
   project: Project
@@ -8,52 +9,67 @@ type ProjectDetailProps = {
 
 function ProjectDetail({ project }: ProjectDetailProps) {
   return (
-    <section className="flex flex-col gap-12 py-12">
+    <section className="flex flex-col gap-16 px-4 py-10 sm:px-6 md:gap-30 md:px-0 md:py-12">
       <div className="flex flex-col gap-6">
-        <Button
-          content="< Back"
-          onClick={() => {
-            window.location.hash = ''
-          }}
-        />
-
         <div className="flex flex-col gap-4">
-          <h1 className="text-5xl font-semibold text-white md:text-6xl">
+          <h1 className="text-4xl font-semibold text-white sm:text-5xl md:text-6xl">
             {project.title}
           </h1>
-          <p className="max-w-3xl text-lg leading-8 text-white/85">
+          <p className="max-w-3xl text-lg leading-8 text-white">
             {project.description}
           </p>
         </div>
+        {project.link ? (
+          <Link
+            href={project.link}
+            content={project.linkTitle ?? 'Visit project'}
+            className="text-lg"
+          />
+        ) : null}
       </div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
         {project.images.map((image, index) => (
           <div key={`${project.slug}-${index}`} className="md:col-span-6">
             <Image
               src={image}
               alt={`${project.title} preview ${index + 1}`}
-              className="h-[22rem] w-full"
+              className="h-64 w-full sm:h-80 md:h-[22rem]"
+              imgClassName="transition-transform duration-300 ease-in-out hover:scale-105"
             />
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
-        {(project.sections ?? []).map((section) => (
-          <article
-            key={section.title}
-            className="rounded-[2rem] border border-emerald-500/50 bg-stone-950/30 p-8 md:col-span-6"
-          >
-            <h2 className="mb-4 text-3xl font-semibold text-white">
-              {section.title}
-            </h2>
-            <p className="leading-8 text-white/85">
-              {section.content}
-            </p>
-          </article>
-        ))}
-      </div>
+      <section className="grid grid-cols-1 gap-10 md:grid-cols-12">
+        <div className="md:col-span-4">
+          {project.languages?.length ? (
+            <section className="flex flex-col gap-4">
+              <h2 className="mb-6 text-2xl font-semibold text-white sm:text-3xl">
+                Tech stack
+              </h2>
+              <div className="flex w-full flex-wrap items-start gap-3">
+                {project.languages.map((language) => (
+                  <TagBlock key={language} content={language} />
+                ))}
+              </div>
+            </section>
+          ) : null}
+        </div>
+
+        <div className="flex flex-col gap-8 md:col-span-8">
+          {(project.sections ?? []).map((section) => (
+            <article key={section.title}>
+              <h2 className="mb-4 text-2xl font-semibold text-emerald-500 sm:text-3xl">
+                {section.title}
+              </h2>
+              <p className="leading-8 text-white/85">
+                {section.content}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
     </section>
   )
 }

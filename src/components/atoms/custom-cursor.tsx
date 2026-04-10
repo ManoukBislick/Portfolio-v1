@@ -22,13 +22,13 @@ function CustomCursor() {
       mouseX = event.clientX
       mouseY = event.clientY
 
-       const target = event.target as Element | null
-       targetScale = target?.closest('a, button') ? 1.6 : 1
+      const target = event.target as Element | null
+      targetScale = target?.closest('a, button') ? 1.6 : 1
     }
 
     const animateCursor = () => {
-      currentX += (mouseX - currentX) * 0.16
-      currentY += (mouseY - currentY) * 0.16
+      currentX += (mouseX - currentX) * 0.2
+      currentY += (mouseY - currentY) * 0.2
       currentScale += (targetScale - currentScale) * 0.18
 
       cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) scale(${currentScale})`

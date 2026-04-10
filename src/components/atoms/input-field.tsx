@@ -1,11 +1,11 @@
 const fieldClassName =
-  'w-full rounded-lg border border-emerald-500 bg-transparent px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none'
+  'w-full rounded-lg border border-emerald-500 bg-transparent px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white'
 
 function InputField() {
   return (
     <div className="flex max-w-80 flex-col gap-8">
-      <div className="gap-2">
-        <p className="text-white">Email:</p>
+      <div className="flex flex-col gap-2">
+        <p className="text-white">Name:</p>
         <input
           type="text"
           name="name"
@@ -13,8 +13,8 @@ function InputField() {
           className={fieldClassName}
         />
       </div>
-      <div className="gap-2">
-        <p className="text-white">Name:</p>
+      <div className="flex flex-col gap-2">
+        <p className="text-white">Email:</p>
         <input
           type="email"
           name="email"
@@ -22,7 +22,7 @@ function InputField() {
           className={fieldClassName}
         />
       </div>
-      <div className="gap-2">
+      <div className="flex flex-col gap-2">
         <p className="text-white">Message:</p>
         <textarea
           name="message"

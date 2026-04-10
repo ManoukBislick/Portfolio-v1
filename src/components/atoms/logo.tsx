@@ -5,7 +5,7 @@ function Logo(){
     <div style={{ fontFamily: 'var(--font-code)' }}>
       <Link
         content="<Manouk/>"
-        href="#"
+        href="#home"
         color="green"
         underline={false}
         className="text-lg font-light"

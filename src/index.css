@@ -1,14 +1,16 @@
 * {
-  background-color: #0D0D0D;
-  scroll-behavior: smooth;
-  
   cursor: none !important;
 }
 
 html,
 body,
 #root {
+  background-color: #0D0D0D;
   cursor: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 a,
@@ -30,4 +32,25 @@ textarea,
   border-radius: 9999px;
   background: #00bc7d;
   will-change: transform;
+}
+
+@media (hover: none), (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+
+  html,
+  body,
+  #root,
+  a,
+  button,
+  input,
+  textarea,
+  [role="button"] {
+    cursor: auto !important;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
 }

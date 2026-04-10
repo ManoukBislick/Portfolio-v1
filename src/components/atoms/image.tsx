@@ -10,7 +10,7 @@ type ImageProps = {
 const Image: FC<ImageProps> = ({ src, alt, className = '', imgClassName = '' }) => {
   return (
     <div
-      className={`group relative h-[22rem] w-[29rem] overflow-hidden rounded-lg border border-emerald-500 ${className}`}
+      className={`group relative h-64 w-full max-w-[29rem] overflow-hidden rounded-lg border border-emerald-500 sm:h-80 md:h-[22rem] md:w-[29rem] ${className}`}
     >
       <img
         src={src}

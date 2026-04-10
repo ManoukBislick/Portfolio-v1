@@ -1,6 +1,9 @@
-import caseImage from '../assets/images/cherry-blossom-pink-flowers-blue-sky-clear-sky-spring-tree-3840x2160-4288.jpg'
+import portfolioImage from '../assets/images/portfolio-v1.png'
+import figmaPortfolioImage from '../assets/images/figma-portfolio-v1.png'
 import kantoorImage from '../assets/images/Kantoor_Manouk copy.jpeg'
-import keeperImage from '../assets/images/Hobby_Manouk copy.jpeg'
+import RijnmondImage from '../assets/images/RijnmondDokters.png'
+import RijnmondLogoImage from '../assets/images/RijnmondDokters-logo.png'
+import HagaLogoImage from '../assets/images/HagaDirect-logo.png'
 
 export type ProjectSection = {
   title: string
@@ -12,64 +15,76 @@ export type Project = {
   title: string
   description: string
   images: string[]
+  languages?: string[]
   sections?: ProjectSection[]
+  link?: string
+  linkTitle?: string
 }
 
 export const projects: Project[] = [
   {
-    slug: 'portfolio-platform',
-    title: 'Portfolio Platform',
+    slug: 'portfolio-v1',
+    title: 'Portfolio Version 1',
+    link: 'https://github.com/',
+    linkTitle: 'View project',
     description:
-      'A portfolio concept focused on clear storytelling, responsive layouts, and a front-end experience that feels polished but still personal.',
-    images: [kantoorImage, caseImage],
+      'My first ever portfolio. Designed with Figma and developed with React and TailwindCSS',
+    images: [portfolioImage, figmaPortfolioImage],
+    languages: ['React', 'TailwindCSS',],
     sections: [
       {
-        title: 'Overview',
+        title: 'Question',
         content:
-          'This project explores how design and development can work together to present personal work in a way that feels structured, expressive, and easy to navigate.',
-      },
-      {
-        title: 'Approach',
-        content:
-          'I built the layout around reusable React components so new sections, media, and project stories can be added without rebuilding the entire page.',
-      },
-    ],
-  },
-  {
-    slug: 'creative-campaign',
-    title: 'Creative Campaign',
-    description:
-      'A campaign-style concept where layout, copy, and visuals are designed to feel bold, readable, and dynamic across different sections.',
-    images: [caseImage, keeperImage],
-    sections: [
-      {
-        title: 'Visual Direction',
-        content:
-          'The design uses contrast, oversized spacing, and a focused color palette to create a strong identity while staying easy to scan.',
+          'I wanted to create a portfolio that truly reflects who I am as a person and developer, while keeping the experience as clear and simple as possible.',
       },
       {
         title: 'Result',
         content:
-          'The final structure supports hero content, supporting visuals, and deeper storytelling without losing rhythm or clarity.',
+          'I designed the concept in Figma, then built it using React and TailwindCSS with an atomic structure. I focused on reusable components used across the whole website.',
       },
     ],
   },
   {
-    slug: 'frontend-experiments',
-    title: 'Front-end Experiments',
+    slug: 'rijnmond-dokters',
+    title: 'Rijnmond Dokters',
+    link: 'https://www.rijnmonddokters.nl/',
+    linkTitle: 'Visit website',
     description:
-      'A set of interface experiments exploring motion, responsiveness, and component systems that stay flexible and maintainable.',
-    images: [keeperImage, kantoorImage],
+      'Rijnmond Dokters is a collaborative organisation of general practitioners that aims to strengthen and improve primary healthcare in the Rotterdam region.',
+    images: [RijnmondLogoImage, RijnmondImage],
+    languages: ['React', 'Next.js', 'TailwindCSS', 'Storyblok', 'Vercel'],
     sections: [
       {
-        title: 'Focus',
+        title: 'Question',
         content:
-          'These experiments test interaction patterns, composition, and reusable components to understand what feels strongest before production work begins.',
+          'The client needed a clean and easy-to-use search results page with filtering options to help users quickly find relevant content.',
       },
       {
-        title: 'Takeaway',
+        title: 'Result',
         content:
-          'The experiments help shape cleaner implementation decisions later, because layout and behavior have already been explored in a smaller setting.',
+          'Based on the Figma design, I implemented and styled the search results experience. This included the result cards, the dynamic result count, and the filtering system to improve usability and structure.',
+      },
+    ],
+  },
+  {
+    slug: 'hagadirect',
+    title: 'HagaDirect',
+    link: 'https://www.hagadirect.nl/',
+    linkTitle: 'Visit website',
+    description:
+      'HagaDirect is a part of HagaZiekenhuis that provides fast, planned medical care with short waiting times for non-urgent treatments.',
+    images: [HagaLogoImage, kantoorImage],
+    languages: ['React', 'Next.js', 'TailwindCSS', 'Storyblok'],
+    sections: [
+      {
+        title: 'Question',
+        content:
+          'The client wanted an accessible website that allows users to quickly and easily make an appointment or find more information about HagaDirect.',
+      },
+      {
+        title: 'Result',
+        content:
+          'At 0to9, I worked mainly on the contact page. I built and styled the “HagaDirect locations” cards and also styled the “Public transport” section within the “Accessibility” component.',
       },
     ],
   },

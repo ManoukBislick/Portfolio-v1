@@ -46,7 +46,7 @@ function Icon({ icon, href }: IconProps) {
       rel="noreferrer"
     >
       <svg
-        className="h-5 w-5"
+        className="h-8 w-8"
         viewBox="0 0 21 21"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
