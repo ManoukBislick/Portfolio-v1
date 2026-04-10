@@ -26,16 +26,28 @@ function ProjectDetail({ project }: ProjectDetailProps) {
             className="text-lg"
           />
         ) : null}
+        <div className='flex flex-row gap-5'>
+          <p className='text-white'>Made by:</p>
+          {project.madeBy ? (
+            <Link
+              href={project.madeByLink}
+              content={project.madeBy ?? 'Visit project'}
+              className="text-lg"
+              color='white'
+            />
+          ) : null}
+        </div>
+        
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
         {project.images.map((image, index) => (
-          <div key={`${project.slug}-${index}`} className="md:col-span-6">
+          <div key={`${project.slug}-${index}`} className="md:col-span-6"> 
             <Image
               src={image}
               alt={`${project.title} preview ${index + 1}`}
-              className="h-64 w-full sm:h-80 md:h-[22rem]"
-              imgClassName="transition-transform duration-300 ease-in-out hover:scale-105"
+              className=""
+              imgClassName="transition-transform duration-500 ease-in-out hover:scale-105"
             />
           </div>
         ))}

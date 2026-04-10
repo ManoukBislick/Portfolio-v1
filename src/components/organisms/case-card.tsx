@@ -11,12 +11,12 @@ function CaseCard({ project, align = 'left' }: CaseCardProps) {
   const isRightAligned = align === 'right'
 
   return (
-    <article className="grid grid-cols-1 items-center gap-6 rounded-[2rem] border border-emerald-500/50 bg-stone-950/30 p-5 sm:p-6 md:grid-cols-12 md:gap-8 md:p-8">
+    <article className="grid grid-cols-1 items-center gap-6 rounded-4xl border border-emerald-500/50 bg-stone-950/30 p-5 sm:p-6 md:grid-cols-12 md:gap-8 md:p-8">
       <div className={`min-w-0 md:col-span-6 ${isRightAligned ? 'md:order-2' : ''}`}>
         <Image
           src={project.images[0]}
           alt={project.title}
-          className="h-64 w-full max-w-none sm:h-80 md:h-[22rem] md:w-full"
+          className="h-64 w-full max-w-none sm:h-80 md:h-88 md:w-full"
         />
       </div>
 

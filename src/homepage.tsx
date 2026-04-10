@@ -41,7 +41,7 @@ function Homepage() {
     <>
       <CustomCursor />
       <main className="grid h-screen grid-cols-1 overflow-y-auto snap-y snap-mandatory md:grid-cols-12">
-        <div className="flex flex-col md:col-start-3 md:col-span-8 xl:col-start-4 xl:col-span-6">
+        <div className="flex flex-col md:col-start-4 md:col-span-6">
           <Navigation />
 
           {selectedProject ? (
@@ -52,9 +52,9 @@ function Homepage() {
               <section
                 id="home"
                 aria-label="Home"
-                className="flex min-h-screen snap-start scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:gap-8 md:px-0 xl:gap-10"
+                className="flex min-h-screen snap-start scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:px-0"
               >
-                <div className="flex max-w-xl flex-col gap-4 xl:max-w-2xl">
+                <div className="flex max-w-2xl flex-col gap-4">
                   <h1 className='text-white font-bold text-4xl/14 sm:text-5xl/16 md:text-6xl/20'>
                     Hi, I'm <span className='text-emerald-500'>Manouk!</span> 
                     <br/> 
@@ -69,7 +69,7 @@ function Homepage() {
                 <Image
                   src={ManoukBislick}
                   alt="Manouk portrait"
-                  className="mx-auto md:ml-auto md:mr-0 md:max-w-[24rem] xl:max-w-[29rem]"
+                  className="mx-auto md:ml-auto md:mr-0"
                 />
               </section>
 
@@ -77,14 +77,14 @@ function Homepage() {
               <section
                 id="about"
                 aria-label="About"
-                className="flex min-h-screen snap-start scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:gap-8 md:px-0 xl:gap-10"
+                className="flex min-h-screen snap-start scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:px-0"
               >
                 <Image 
                   src={KantoorManouk} 
                   alt='Me in the office'
-                  className="mx-auto md:mr-auto md:ml-0 md:max-w-[24rem] xl:max-w-[29rem]"
+                  className="mx-auto md:mr-auto md:ml-0"
                 />
-                <div className="flex max-w-xl flex-col gap-4 xl:max-w-2xl">
+                <div className="flex max-w-2xl flex-col gap-4">
                   <h2 className='text-white font-semibold text-4xl sm:text-5xl md:text-5xl'>
                     A little bit <span className='text-emerald-500'>about</span> me
                   </h2>

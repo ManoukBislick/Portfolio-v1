@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Logo from "../atoms/logo";
 import Link from "../atoms/link";
 
-function Navigation(){
+function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -15,10 +15,7 @@ function Navigation(){
     }
 
     window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   const handleSectionScroll = (sectionId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
@@ -26,9 +23,7 @@ function Navigation(){
 
     const targetSection = document.getElementById(sectionId)
 
-    if (!targetSection) {
-      return
-    }
+    if (!targetSection) return
 
     targetSection.scrollIntoView({
       behavior: 'smooth',
@@ -40,45 +35,51 @@ function Navigation(){
   }
 
   return (
-    <nav
-      aria-label="Primary"
-      className="sticky top-0 z-50 bg-stone-950/25 px-4 py-4 backdrop-blur-[5px] md:px-0 md:flex md:items-center md:justify-between"
-    >
-      <div className="flex items-center justify-between">
-        <Logo />
-        <button
-          type="button"
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-navigation"
-          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-lg border border-emerald-500 md:hidden"
-          onClick={() => {
-            setIsMenuOpen((open) => !open)
-          }}
-        >
-          <span className={`h-0.5 w-5 bg-emerald-500 transition-transform duration-300 ${isMenuOpen ? 'translate-y-2 rotate-45' : ''}`} />
-          <span className={`h-0.5 w-5 bg-emerald-500 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-          <span className={`h-0.5 w-5 bg-emerald-500 transition-transform duration-300 ${isMenuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
-        </button>
-      </div>
+    <>
+      <nav
+        aria-label="Primary"
+        className="sticky top-0 z-40 bg-stone-950/25 px-4 py-4 backdrop-blur-[5px] md:px-0 md:flex md:items-center md:justify-between"
+      >
+        <div className="flex items-center justify-between w-full md:w-auto">
+          <Logo />
+          <button
+            type="button"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            className="flex z-50 h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-lg border border-emerald-500 md:hidden relative"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <span className={`h-0.5 w-5 bg-emerald-500 transition-transform duration-300 ${isMenuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+            <span className={`h-0.5 w-5 bg-emerald-500 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
+            <span className={`h-0.5 w-5 bg-emerald-500 transition-transform duration-300 ${isMenuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+          </button>
+        </div>
 
-      <div className="hidden justify-end gap-4 md:flex md:ml-auto">
-        <Link content="Home" href="#home" color="green" onClick={handleSectionScroll('home')} />
-        <Link content="About" href="#about" color="green" onClick={handleSectionScroll('about')} />
-        <Link content="Projects" href="#projects" color="green" onClick={handleSectionScroll('projects')} />
-        <Link content="Contact" href="#contact" color="green" onClick={handleSectionScroll('contact')} />
-      </div>
+        <div className="hidden justify-end gap-4 md:flex md:ml-auto">
+          <Link content="Home" href="#home" color="green" onClick={handleSectionScroll('home')} />
+          <Link content="About" href="#about" color="green" onClick={handleSectionScroll('about')} />
+          <Link content="Projects" href="#projects" color="green" onClick={handleSectionScroll('projects')} />
+          <Link content="Contact" href="#contact" color="green" onClick={handleSectionScroll('contact')} />
+        </div>
+      </nav>
 
       <div
         id="mobile-navigation"
-        className={`${isMenuOpen ? 'mt-4 flex' : 'hidden'} flex-col gap-4 rounded-[1.5rem] border border-emerald-500/40 bg-stone-950/90 p-5 md:hidden`}
+        className={`
+          fixed inset-0 z-30 md:hidden
+          flex flex-col gap-8 p-5 justify-center text-center
+          bg-stone-950/40 backdrop-blur-md
+          transition-all duration-300 ease-in-out
+          ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}
+        `}
       >
         <Link content="Home" href="#home" color="green" onClick={handleSectionScroll('home')} />
         <Link content="About" href="#about" color="green" onClick={handleSectionScroll('about')} />
         <Link content="Projects" href="#projects" color="green" onClick={handleSectionScroll('projects')} />
         <Link content="Contact" href="#contact" color="green" onClick={handleSectionScroll('contact')} />
       </div>
-    </nav>
+    </>
   )
 }
 

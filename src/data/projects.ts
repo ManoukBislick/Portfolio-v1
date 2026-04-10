@@ -1,9 +1,9 @@
 import portfolioImage from '../assets/images/portfolio-v1.png'
 import figmaPortfolioImage from '../assets/images/figma-portfolio-v1.png'
-import kantoorImage from '../assets/images/Kantoor_Manouk copy.jpeg'
 import RijnmondImage from '../assets/images/RijnmondDokters.png'
 import RijnmondLogoImage from '../assets/images/RijnmondDokters-logo.png'
 import HagaLogoImage from '../assets/images/HagaDirect-logo.png'
+import HagaDirect from '../assets/images/HagaDirect.png'
 
 export type ProjectSection = {
   title: string
@@ -19,12 +19,16 @@ export type Project = {
   sections?: ProjectSection[]
   link?: string
   linkTitle?: string
+  madeBy?:string
+  madeByLink?:string
 }
 
 export const projects: Project[] = [
   {
     slug: 'portfolio-v1',
     title: 'Portfolio Version 1',
+    madeByLink: 'https://www.linkedin.com/in/manouk-bislick-42241420a/?skipRedirect=true',
+    madeBy: 'Manouk Bislick',
     link: 'https://github.com/',
     linkTitle: 'View project',
     description:
@@ -47,6 +51,8 @@ export const projects: Project[] = [
   {
     slug: 'rijnmond-dokters',
     title: 'Rijnmond Dokters',
+    madeByLink: 'https://0to9.nl/',
+    madeBy: '0to9 Values Driven Creativity',
     link: 'https://www.rijnmonddokters.nl/',
     linkTitle: 'Visit website',
     description:
@@ -69,11 +75,13 @@ export const projects: Project[] = [
   {
     slug: 'hagadirect',
     title: 'HagaDirect',
+    madeByLink: 'https://0to9.nl/',
+    madeBy: '0to9 Values Driven Creativity',
     link: 'https://www.hagadirect.nl/',
     linkTitle: 'Visit website',
     description:
       'HagaDirect is a part of HagaZiekenhuis that provides fast, planned medical care with short waiting times for non-urgent treatments.',
-    images: [HagaLogoImage, kantoorImage],
+    images: [HagaLogoImage, HagaDirect],
     languages: ['React', 'Next.js', 'TailwindCSS', 'Storyblok'],
     sections: [
       {

@@ -32,7 +32,7 @@ function Link({
       <a
         href={href}
         onClick={onClick}
-        style={{ fontFamily: 'var(--font-poppins)' }}
+        style={{ fontFamily: 'var(--font-poppins)', fontSize: '16px' }}
         className={`${colorStyle} ${underline ? decorationStyle : 'no-underline'} pointer-events-auto transition-colors duration-300 ease-in ${className}`}
       >
         {content}
