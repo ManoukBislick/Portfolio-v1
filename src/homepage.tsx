@@ -1,6 +1,6 @@
 import './App.css'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import CustomCursor from './components/atoms/custom-cursor'
 import Navigation from './components/organisms/navigation'
@@ -13,6 +13,7 @@ import Icon from './components/atoms/icon'
 
 function Homepage() {
   const [hash, setHash] = useState(window.location.hash)
+  const mainScrollRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -26,6 +27,37 @@ function Homepage() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!hash.startsWith('#/projects/')) {
+      return
+    }
+
+    mainScrollRef.current?.scrollTo({
+      top: 0,
+      behavior: 'auto',
+    })
+  }, [hash])
+
+  useEffect(() => {
+    if (!hash || hash.startsWith('#/projects/')) {
+      return
+    }
+
+    const sectionId = hash.startsWith('#/section/')
+      ? hash.replace('#/section/', '')
+      : hash.replace('#', '')
+    const targetSection = document.getElementById(sectionId)
+
+    if (!targetSection) {
+      return
+    }
+
+    targetSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }, [hash])
+
   const projectSlug = hash.startsWith('#/projects/')
     ? hash.replace('#/projects/', '')
     : null
@@ -37,7 +69,7 @@ function Homepage() {
   return (
     <>
       <CustomCursor />
-      <main className="grid h-screen grid-cols-1 overflow-y-auto snap-y snap-mandatory md:grid-cols-12">
+      <main ref={mainScrollRef} className="grid h-screen grid-cols-1 overflow-y-auto md:grid-cols-12">
         <div className="flex flex-col md:col-start-4 md:col-span-6">
           <Navigation />
 
@@ -49,7 +81,7 @@ function Homepage() {
               <section
                 id="home"
                 aria-label="Home"
-                className="flex min-h-screen snap-start scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:px-0"
+                className="flex min-h-screen scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:px-0"
               >
                 <div className="flex max-w-2xl flex-col gap-4">
                   <h1 className='text-white font-bold text-4xl/14 sm:text-5xl/16 md:text-6xl/20'>
@@ -69,7 +101,7 @@ function Homepage() {
               <section
                 id="about"
                 aria-label="About"
-                className="flex min-h-screen snap-start scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:px-0"
+                className="flex min-h-screen scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:px-0"
               >
                 <div className="flex max-w-2xl flex-col gap-4">
                   <h2 className='text-white font-semibold text-4xl sm:text-5xl md:text-5xl'>
@@ -91,7 +123,7 @@ function Homepage() {
               <section
                 id="projects"
                 aria-label="Projects"
-                className='flex min-h-screen snap-start scroll-mt-24 items-center justify-center px-4 py-24 sm:px-6 md:px-0'
+                className='flex min-h-screen scroll-mt-24 items-center justify-center px-4 py-24 sm:px-6 md:px-0'
               >
                 <div className='flex w-full flex-col gap-10'>
                   <h2 className='text-white font-semibold text-4xl text-center sm:text-5xl md:text-5xl'>
@@ -112,7 +144,7 @@ function Homepage() {
               <section
                 id="contact"
                 aria-label="contact"
-                className='flex min-h-screen snap-start scroll-mt-24 items-center justify-center px-4 py-24 sm:px-6 md:px-0'
+                className='flex min-h-screen scroll-mt-24 items-center justify-center px-4 py-24 sm:px-6 md:px-0'
               >
                 <div className='flex w-full flex-col gap-8'>
                   <h2 className='text-white font-semibold text-4xl text-center sm:text-5xl md:text-5xl'>

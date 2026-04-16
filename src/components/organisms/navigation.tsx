@@ -23,14 +23,17 @@ function Navigation() {
 
     const targetSection = document.getElementById(sectionId)
 
-    if (!targetSection) return
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+      window.history.replaceState(null, '', `#/section/${sectionId}`)
+      setIsMenuOpen(false)
+      return
+    }
 
-    targetSection.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
-
-    window.history.replaceState(null, '', `#${sectionId}`)
+    window.location.hash = `#/section/${sectionId}`
     setIsMenuOpen(false)
   }
 
@@ -57,10 +60,10 @@ function Navigation() {
         </div>
 
         <div className="hidden justify-end gap-4 md:flex md:ml-auto">
-          <Link content="Home" href="#home" color="green" onClick={handleSectionScroll('home')} />
-          <Link content="About" href="#about" color="green" onClick={handleSectionScroll('about')} />
-          <Link content="Projects" href="#projects" color="green" onClick={handleSectionScroll('projects')} />
-          <Link content="Contact" href="#contact" color="green" onClick={handleSectionScroll('contact')} />
+          <Link content="Home" href="#/section/home" color="green" onClick={handleSectionScroll('home')} />
+          <Link content="About" href="#/section/about" color="green" onClick={handleSectionScroll('about')} />
+          <Link content="Projects" href="#/section/projects" color="green" onClick={handleSectionScroll('projects')} />
+          <Link content="Contact" href="#/section/contact" color="green" onClick={handleSectionScroll('contact')} />
         </div>
       </nav>
 
@@ -74,10 +77,10 @@ function Navigation() {
           ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}
         `}
       >
-        <Link content="Home" href="#home" color="green" onClick={handleSectionScroll('home')} />
-        <Link content="About" href="#about" color="green" onClick={handleSectionScroll('about')} />
-        <Link content="Projects" href="#projects" color="green" onClick={handleSectionScroll('projects')} />
-        <Link content="Contact" href="#contact" color="green" onClick={handleSectionScroll('contact')} />
+        <Link content="Home" href="#/section/home" color="green" onClick={handleSectionScroll('home')} />
+        <Link content="About" href="#/section/about" color="green" onClick={handleSectionScroll('about')} />
+        <Link content="Projects" href="#/section/projects" color="green" onClick={handleSectionScroll('projects')} />
+        <Link content="Contact" href="#/section/contact" color="green" onClick={handleSectionScroll('contact')} />
       </div>
     </>
   )
