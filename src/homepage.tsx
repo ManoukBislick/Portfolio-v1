@@ -171,7 +171,6 @@ function Homepage() {
         </div>
       </main>
 
-      <Analytics />
     </>
   )
 }
