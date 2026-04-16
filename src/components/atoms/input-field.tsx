@@ -78,7 +78,7 @@ function InputField() {
         <input
           type="text"
           name="name"
-          placeholder="Manouk Bislick"
+          placeholder="Enter your name..."
           className={fieldClassName}
           onChange={handleFieldChange}
           required
@@ -89,7 +89,7 @@ function InputField() {
         <input
           type="email"
           name="email"
-          placeholder="bislickmanouk@gmail.com"
+          placeholder="Enter your email..."
           className={fieldClassName}
           onChange={handleFieldChange}
           required
