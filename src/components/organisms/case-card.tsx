@@ -16,7 +16,7 @@ function CaseCard({ project, align = 'left' }: CaseCardProps) {
         <Image
           src={project.images[0]}
           alt={project.title}
-          className="h-64 w-full max-w-none sm:h-80 md:h-88 md:w-full"
+          className="w-full max-w-none"
         />
       </div>
 

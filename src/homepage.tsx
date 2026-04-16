@@ -4,15 +4,12 @@ import { useEffect, useState } from 'react'
 
 import CustomCursor from './components/atoms/custom-cursor'
 import Navigation from './components/organisms/navigation'
-import Image from './components/atoms/image'
 import CaseCard from './components/organisms/case-card'
 import ProjectDetail from './components/organisms/project-detail'
 import { projects } from './data/projects'
 import InputField from './components/atoms/input-field'
 import Icon from './components/atoms/icon'
 
-import ManoukBislick from './assets/images/Ik.jpg'
-import KantoorManouk from './assets/images/Kantoor_Manouk copy.jpeg'
 
 function Homepage() {
   const [hash, setHash] = useState(window.location.hash)
@@ -63,14 +60,9 @@ function Homepage() {
                   <p className='max-w-xl text-white'>
                     Playful ideas brought to life with powerful execution.
                     <br/>
-                    <span className='text-emerald-500'>Fun fact: My favourite colour is green ;)</span>
+                    <span className='text-emerald-500'>Fun fact: My favourite color is green ;)</span>
                   </p>
                 </div>
-                <Image
-                  src={ManoukBislick}
-                  alt="Manouk portrait"
-                  className="mx-auto md:ml-auto md:mr-0"
-                />
               </section>
 
               {/* About */}
@@ -79,11 +71,6 @@ function Homepage() {
                 aria-label="About"
                 className="flex min-h-screen snap-start scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:px-0"
               >
-                <Image 
-                  src={KantoorManouk} 
-                  alt='Me in the office'
-                  className="mx-auto md:mr-auto md:ml-0"
-                />
                 <div className="flex max-w-2xl flex-col gap-4">
                   <h2 className='text-white font-semibold text-4xl sm:text-5xl md:text-5xl'>
                     A little bit <span className='text-emerald-500'>about</span> me
@@ -141,6 +128,7 @@ function Homepage() {
                       <div className='flex flex-row gap-5'>
                         <Icon icon='linkedin' href={'https://www.linkedin.com/in/manouk-bislick-42241420a/'} />
                         <Icon icon='github' href={'https://github.com/ManoukBislick'} />
+                        <Icon icon='spotify' href={'https://open.spotify.com/user/manoukbislick'} />
                       </div>
                     </div>
                   </section>
