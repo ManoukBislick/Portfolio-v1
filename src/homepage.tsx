@@ -1,6 +1,7 @@
 import './App.css'
 
 import { useEffect, useRef, useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 
 import CustomCursor from './components/atoms/custom-cursor'
 import Navigation from './components/organisms/navigation'
@@ -69,6 +70,7 @@ function Homepage() {
   return (
     <>
       <CustomCursor />
+      <Analytics />
       <main ref={mainScrollRef} className="grid h-screen grid-cols-1 overflow-y-auto md:grid-cols-12">
         <div className="flex flex-col md:col-start-4 md:col-span-6">
           <Navigation />
