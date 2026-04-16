@@ -28,10 +28,10 @@ function ProjectDetail({ project }: ProjectDetailProps) {
         ) : null}
         <div className='flex flex-row gap-5'>
           <p className='text-white'>Made by:</p>
-          {project.madeBy ? (
+          {project.madeBy && project.madeByLink ? (
             <Link
               href={project.madeByLink}
-              content={project.madeBy ?? 'Visit project'}
+              content={project.madeBy}
               className="text-lg"
               color='white'
             />
