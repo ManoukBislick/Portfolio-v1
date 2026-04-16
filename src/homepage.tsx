@@ -2,8 +2,6 @@ import './App.css'
 
 import { useEffect, useRef, useState } from 'react'
 
-import { Analytics } from '@vercel/analytics/next'
-
 import CustomCursor from './components/atoms/custom-cursor'
 import Navigation from './components/organisms/navigation'
 import CaseCard from './components/organisms/case-card'
