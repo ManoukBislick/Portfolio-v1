@@ -43,8 +43,8 @@ function Homepage() {
       return
     }
 
-    const sectionId = hash.startsWith('#/section/')
-      ? hash.replace('#/section/', '')
+    const sectionId = hash.startsWith('#/')
+      ? hash.replace('#/', '')
       : hash.replace('#', '')
     const targetSection = document.getElementById(sectionId)
 
@@ -81,7 +81,7 @@ function Homepage() {
               <section
                 id="home"
                 aria-label="Home"
-                className="flex min-h-screen scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:px-0"
+                className="flex min-h-screen scroll-mt-24 flex-col items-center gap-10 px-4 pb-0 pt-24 sm:px-6 md:flex-row md:px-0"
               >
                 <div className="flex max-w-2xl flex-col gap-4">
                   <h1 className='text-white font-bold text-4xl/14 sm:text-5xl/16 md:text-6xl/20'>
@@ -101,7 +101,7 @@ function Homepage() {
               <section
                 id="about"
                 aria-label="About"
-                className="flex min-h-screen scroll-mt-24 flex-col items-center gap-10 px-4 py-24 sm:px-6 md:flex-row md:px-0"
+                className="flex min-h-screen scroll-mt-12 flex-col items-center gap-10 px-4 pt-0 pb-2 sm:px-6 md:flex-row md:px-0"
               >
                 <div className="flex max-w-2xl flex-col gap-4">
                   <h2 className='text-white font-semibold text-4xl sm:text-5xl md:text-5xl'>
