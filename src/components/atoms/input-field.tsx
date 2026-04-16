@@ -23,7 +23,7 @@ function InputField() {
     const message = String(formData.get('message') ?? '').trim()
 
     if (!form.checkValidity() || !name || !email || !message) {
-      return 'Please fill everything in.'
+      return 'Oopsie, please fill everything in.'
     }
 
     if (!emailPattern.test(email)) {
