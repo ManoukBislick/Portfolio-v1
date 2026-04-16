@@ -5,6 +5,7 @@ import Button from './button'
 
 const fieldClassName =
   'w-full rounded-lg border border-emerald-500 bg-transparent px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white'
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function InputField() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
@@ -16,16 +17,30 @@ function InputField() {
     }
   }
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const form = event.currentTarget
-    const formData = new FormData(form)
+  const validateForm = (formData: FormData, form: HTMLFormElement) => {
     const name = String(formData.get('name') ?? '').trim()
     const email = String(formData.get('email') ?? '').trim()
     const message = String(formData.get('message') ?? '').trim()
 
-    if (!name || !email || !message) {
-      setValidationError('Please fill everything in.')
+    if (!form.checkValidity() || !name || !email || !message) {
+      return 'Please fill everything in.'
+    }
+
+    if (!emailPattern.test(email)) {
+      return 'Please enter a valid email address.'
+    }
+
+    return ''
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    const errorMessage = validateForm(formData, form)
+
+    if (errorMessage) {
+      setValidationError(errorMessage)
       setStatus('idle')
       return
     }
